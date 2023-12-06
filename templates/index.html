@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fingerprint Enrollment</title>
+</head>
+<body>
+    <h1>Fingerprint Enrollment System</h1>
+    <button id="enrollBtn">Enroll</button>
+    <div id="status"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#enrollBtn").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/enroll",
+                    success: function (data) {
+                        $("#status").text("Enrollment Status: " + data.status);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
